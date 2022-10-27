@@ -1,14 +1,14 @@
 // CREATE A COUNTDOWN TIMER
-let timerEl = document.querySelector(".nav");
+let timerElement = document.querySelector(".nav");
 
-let secondsLeft = 76;
+let seconds = 76;
 
 function timer() {
     let countdown = setInterval(function () {
-        secondsLeft--;
-        timerEl.textContent = "Time: " + secondsLeft;
+        seconds--;
+        timerElement.textContent = "Time: " + seconds;
 
-        if (secondsLeft === 0) {
+        if (seconds === 0) {
             clearInterval(countdown);
         }
     }, 1000);
@@ -22,42 +22,62 @@ btnFour.style.display = "none"
 
 
 // HTML link to question text
-let questionsEl = document.querySelector(".questionText");
+let questionsElement = document.querySelector(".questionText");
 
-let welcomeText = questionsEl.textContent = "Coding quiz challenge";
-let answerBtns = document.getElementsByClassName("btnOne","btnTwo","btnThree","btnFour")
+questionsElement.textContent = "Coding quiz challenge";
+
 
 // When I click the start button the timer begins and the first set of questions appear, as start button disappears
 startBtn.addEventListener("click", function () {
     startBtn.style.display = "none";
     btnOne.style.display = "block"
-    btnOne.textContent = "String"
     btnTwo.style.display = "block"
-    btnTwo.textContent = "Number"
     btnThree.style.display = "block"
-    btnThree.textContent = "Boolean"
     btnFour.style.display = "block"
-    btnFour.textContent = "Object"
+    
     timer();
 })    
 
 // When I click a button it will store the answer given true or false
 let selectedAnswerBtn = ["btnOne","btnTwo","btnThree","btnFour"]
+let currentQuestionIdx = 0
+
+let questions = [
+    {
+        question: "Which data type returns a true or false value?",
+        answer: ["String", "Number", "Boolean", "Object"], 
+        correctIndex: 2,
+    },
+    {
+        question: "Which element is used to make the code more readable?",
+        answer: ["Notes", "Lines", "Arrays", "Comments"],
+        correctIndex: 3
+    },
+    {
+        question: "Arrays must be enclosed within..",
+        answer: ["Curley brackets", "Commas", "Exclamations", "Brackets"],
+        correctIndex: 3
+    },
+    {
+        question: "Strings cannot be concatinated.",
+        answer: []
+    },
+    {
+
+    }
+]
+
+ 
+
+ 
+ 
+ "Which of the following is a block of code used to perform a specific task?"
 
 
-let questOne = "Which data type returns a true or false value?"
-let questTwo = "What element is used to make the code more readable?"
-let questThree = "Arrays must be enclosed within.."
-let questFour = "Strings cannot be concatinated."
-let questFive = "Which of the following is a block of code used to perform a specific task?"
 
 
 
 
-
-
-
-    // questionsEl.textContent = "Which data type returns a true or false value?";
 
 
 
