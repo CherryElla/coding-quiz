@@ -1,4 +1,4 @@
-// Questions data
+// Questions data - objects with questiona and answers
 let questions = [
     {
         question: "Which data type returns a true or false value?",
@@ -22,91 +22,47 @@ let questions = [
     },
     {
         question: "Which of the following is a block of code used to perform a specific task?",
-        answer: ["Function", "Object", "Window", ""],
-        correctIndex: 2
+        answer: ["Function", "Object", "Window", "Array"],
+        correctIndex: 0
 
     }
 ];
 
-// Create a local storage for questions
- localStorage.setItem("questions", questions);
-// Keep track of current question
- let currentQuestionIdx = 0
+// Set all global variables
+let seconds = 76; // Starting time
+let currentQuestionIdx = 0 // Keep track of current question
+let timerElement = document.querySelector(".nav"); // Link to navbar
+let allAnswerBtns = document.querySelectorAll(".answerBtns"); // Link to ALL anser buttons
+let displayWrongOrRight = document.querySelector(".footer"); // Link to footer for whether answer was right
 
-// Start my quiz
+// Start quiz function
 function startQuiz(){
-    startBtn.style.display = "none";
-    btnOne.style.display = "block"
-    btnTwo.style.display = "block"
-    btnThree.style.display = "block"
-    btnFour.style.display = "block"
-    
+    startBtn.hiden = true;
+    questionCard.hidden = false;
     timer();
+    displayQuestion();
 
 }
 
 
 
-// CREATE A COUNTDOWN TIMER
-
-
-
-let timerElement = document.querySelector(".nav");
-
-let seconds = 76;
-
+// Timer function
 function timer() {
     let countdown = setInterval(function () {
         seconds--;
         timerElement.textContent = "Time: " + seconds;
-
         if (seconds === 0) {
             clearInterval(countdown);
         }
     }, 1000);
 }
 
-// Hide answer buttons for initial loadscreen
-btnOne.style.display = "none"
-btnTwo.style.display = "none"
-btnThree.style.display = "none"
-btnFour.style.display = "none"
-
-
-// HTML link to question text
-let questionsElement = document.querySelector(".questionText");
-
-questionsElement.textContent = "Coding quiz challenge";
-
-
-// When I click the start button the timer begins and the first set of questions appear, as start button disappears
-startBtn.addEventListener("click", function () {
-   
-})    
-
-// When I click a button it will store the answer given true or false
-let selectedAnswerBtn = ["btnOne","btnTwo","btnThree","btnFour"]
 
 
 
 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-// HTML doc answer buttons reference
-let allAnswerBtns = document.querySelectorAll(".answerBtns")
 // HTML doc footer reference
-let trueOrFalse = document.querySelector(".footer")
+
 
 for (let i = 0; i < allAnswerBtns.length; i++) {
     allAnswerBtns[i].addEventListener("click", function (event) {
@@ -123,26 +79,9 @@ let scoreFinal = 0
 function score(chosenAnswer, correctAnswer) {
     if (chosenAnswer === correctAnswer) {
         scoreFinal++
-        trueOrFalse.textContent = "Correct!";
+        displayWrongOrRight.textContent = "Correct!";
     } else {
-        trueOrFalse.textContent = "Wrong!";
+        displayWrongOrRight.textContent = "Wrong!";
     }
 }
 
-
-
-
-
-// questionsEl.textContent = "What element is used to make the code more readable?";
-
-
-
-
-
-
-
-
-
-// let questionThree = questionsEl.textContent = "Arrays must be enclosed within.."
-// let questionFour = questionsEl.textContent = "Strings cannot be concatinated."
-// let questionFive = questionsEl.textContent = "Which of the following is a block of code used to perform a specific task?"
