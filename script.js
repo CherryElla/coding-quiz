@@ -1,4 +1,56 @@
+// Questions data
+let questions = [
+    {
+        question: "Which data type returns a true or false value?",
+        answer: ["String", "Number", "Boolean", "Object"], 
+        correctIndex: 2,
+    },
+    {
+        question: "Which element is used to make the code more readable?",
+        answer: ["Notes", "Lines", "Arrays", "Comments"],
+        correctIndex: 3
+    },
+    {
+        question: "Arrays must be enclosed within..",
+        answer: ["Curley brackets", "Commas", "Exclamations", "Brackets"],
+        correctIndex: 3
+    },
+    {
+        question: "Strings cannot be concatenated.",
+        answer: ["True", "False"],
+        correctIndex: 1,
+    },
+    {
+        question: "Which of the following is a block of code used to perform a specific task?",
+        answer: ["Function", "Object", "Window", ""],
+        correctIndex: 2
+
+    }
+];
+
+// Create a local storage for questions
+ localStorage.setItem("questions", questions);
+// Keep track of current question
+ let currentQuestionIdx = 0
+
+// Start my quiz
+function startQuiz(){
+    startBtn.style.display = "none";
+    btnOne.style.display = "block"
+    btnTwo.style.display = "block"
+    btnThree.style.display = "block"
+    btnFour.style.display = "block"
+    
+    timer();
+
+}
+
+
+
 // CREATE A COUNTDOWN TIMER
+
+
+
 let timerElement = document.querySelector(".nav");
 
 let seconds = 76;
@@ -29,49 +81,18 @@ questionsElement.textContent = "Coding quiz challenge";
 
 // When I click the start button the timer begins and the first set of questions appear, as start button disappears
 startBtn.addEventListener("click", function () {
-    startBtn.style.display = "none";
-    btnOne.style.display = "block"
-    btnTwo.style.display = "block"
-    btnThree.style.display = "block"
-    btnFour.style.display = "block"
-    
-    timer();
+   
 })    
 
 // When I click a button it will store the answer given true or false
 let selectedAnswerBtn = ["btnOne","btnTwo","btnThree","btnFour"]
-let currentQuestionIdx = 0
 
-let questions = [
-    {
-        question: "Which data type returns a true or false value?",
-        answer: ["String", "Number", "Boolean", "Object"], 
-        correctIndex: 2,
-    },
-    {
-        question: "Which element is used to make the code more readable?",
-        answer: ["Notes", "Lines", "Arrays", "Comments"],
-        correctIndex: 3
-    },
-    {
-        question: "Arrays must be enclosed within..",
-        answer: ["Curley brackets", "Commas", "Exclamations", "Brackets"],
-        correctIndex: 3
-    },
-    {
-        question: "Strings cannot be concatinated.",
-        answer: []
-    },
-    {
 
-    }
-]
 
- 
 
  
  
- "Which of the following is a block of code used to perform a specific task?"
+ 
 
 
 
