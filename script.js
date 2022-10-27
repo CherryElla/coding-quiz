@@ -1,28 +1,28 @@
 // Questions data - objects with questiona and answers
 let questions = [
     {
-        question: "Which data type returns a true or false value?",
-        answer: ["String", "Number", "Boolean", "Object"],
+        text: "Which data type returns a true or false value?",
+        answers: ["String", "Number", "Boolean", "Object"],
         correctIndex: 2,
     },
     {
-        question: "Which element is used to make the code more readable?",
-        answer: ["Notes", "Lines", "Arrays", "Comments"],
+        text: "Which element is used to make the code more readable?",
+        answers: ["Notes", "Lines", "Arrays", "Comments"],
         correctIndex: 3
     },
     {
-        question: "Arrays must be enclosed within..",
-        answer: ["Curley brackets", "Commas", "Exclamations", "Brackets"],
+        text: "Arrays must be enclosed within..",
+        answers: ["Curley brackets", "Commas", "Exclamations", "Brackets"],
         correctIndex: 3
     },
     {
-        question: "Strings cannot be concatenated.",
-        answer: ["True", "False"],
+        text: "Strings cannot be concatenated.",
+        answers: ["True", "False"],
         correctIndex: 1,
     },
     {
-        question: "Which of the following is a block of code used to perform a specific task?",
-        answer: ["Function", "Object", "Window", "Array"],
+        text: "Which of the following is a block of code used to perform a specific task?",
+        answers: ["Function", "Object", "Window", "Array"],
         correctIndex: 0
 
     }
@@ -32,18 +32,21 @@ let questions = [
 let scoreCount = 0
 let seconds = 76; // Starting time
 let currentQuestionIdx = 0 // Keep track of current question
+let timerPenalty = 2;
 let timerElement = document.querySelector(".nav"); // Link to navbar
 let allAnswerBtns = document.querySelectorAll(".answerBtn"); // Link to ALL anser buttons
 let displayWrongOrRight = document.querySelector(".footer"); // Link to footer for whether answer was right
 // Event listeners
 startBtn.addEventListener('click', startQuiz);
-
+for (let btn of allAnswerBtns) {
+    btn.addEventListener('click', answerSelected);
+}
 // Start quiz function
 function startQuiz() {
     startBtn.hidden = true;
     questionCard.hidden = false; // Reveals whole div with questions
     timer();
-    displayQuestion(); // Call the displayQuestion function
+    displayQuestion(questions[currentQuestionIdx]); // Call the displayQuestion function
 
 }
 
@@ -60,7 +63,8 @@ function timer() {
 
 // Next question function
 function displayQuestion(question) {
-    document.querySelector("#questionText").textContent = currentQuestionIdx + question.text;
+    document.querySelector("#questionText").textContent =
+    currentQuestionIdx+1 + "- " + question.text;
     for (let i = 0; i < allAnswerBtns.length; i++) {
         if (i < question.answers.length) {
             allAnswerBtns[i].textContent = question.answers[i];
@@ -89,12 +93,21 @@ function answerSelected(event) {
     let answerIndex = event.target.getAttribute('index');
     let currentQuestion = questions[currentQuestionIdx];
     score(answerIndex, currentQuestion.correctIndex);
-// The next question is displayed -- plus one in the index
+    // The next question is displayed -- plus one in the index
     currentQuestionIdx++;
-    if (currentQuestionIdx < questions.length) { 
+    if (currentQuestionIdx < questions.length) {
         displayQuestion(questions[currentQuestionIdx]);
-    } else { 
-        endQuiz(); 
-}
+    } else {
+        endQuiz();
+    }
 }
 
+// Trigger end of questions
+function endQuiz() {
+    startQuiz.hidden = false;
+    questionCard.hidden = true;
+    // TODO: Stop timer
+    // TODO: Hide the question card
+    // TODO: Show the final scoreboard
+    // TODO: Clear footer
+}
