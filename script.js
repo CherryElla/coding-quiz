@@ -2,7 +2,7 @@
 let questions = [
     {
         question: "Which data type returns a true or false value?",
-        answer: ["String", "Number", "Boolean", "Object"], 
+        answer: ["String", "Number", "Boolean", "Object"],
         correctIndex: 2,
     },
     {
@@ -32,19 +32,19 @@ let questions = [
 let seconds = 76; // Starting time
 let currentQuestionIdx = 0 // Keep track of current question
 let timerElement = document.querySelector(".nav"); // Link to navbar
-let allAnswerBtns = document.querySelectorAll(".answerBtns"); // Link to ALL anser buttons
+let allAnswerBtns = document.querySelectorAll(".answerBtn"); // Link to ALL anser buttons
 let displayWrongOrRight = document.querySelector(".footer"); // Link to footer for whether answer was right
+// Event listeners
+startBtn.addEventListener('click', startQuiz);
 
 // Start quiz function
-function startQuiz(){
-    startBtn.hiden = true;
-    questionCard.hidden = false;
+function startQuiz() {
+    startBtn.hidden = true;
+    questionCard.hidden = false; // Reveals whole div with questions
     timer();
-    displayQuestion();
+    displayQuestion(); // Call the displayQuestion function
 
 }
-
-
 
 // Timer function
 function timer() {
@@ -57,20 +57,23 @@ function timer() {
     }, 1000);
 }
 
-
-
-
-
-// HTML doc footer reference
-
-
-for (let i = 0; i < allAnswerBtns.length; i++) {
-    allAnswerBtns[i].addEventListener("click", function (event) {
-        console.log(event.target.getAttribute("index"))
-        let correctAnswer = getCorrectAnswerForCurrentQuestion();
-        score(event.target.getAttribute("index"), correctAnswer); 
-});
+// Next question function
+function displayQuestion(question) {
+    document.querySelector("#questionText").textContent = currentQuestionIdx + question.text;
+    for (let i = 0; i < allAnswerBtns.length; i++) {
+        if (i < question.answers.length) {
+            allAnswerBtns[i].textContent = question.answers[i];
+        }
+    }
 }
+
+
+
+
+
+
+
+
 
 
 // CREATE A POINTS CALCULATOR
