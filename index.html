@@ -12,30 +12,36 @@
 <body>
   <nav class="nav">
     <p id="timerText">Time: 75</p>
-  </nav>
-  <div>
-    <h2>Coding Quiz!</h2>
-  </div>
+</nav>
 
-  <div id="questionCard" hidden>
+<div id="title" class="row">
+    <h2>Coding Quiz Challenge</h2>
+</div>
+
+<div class="row">
+    <button id="startBtn">START</button>
+</div>
+
+<div id="questionCard" >
     <div class="row">
-      <div id="questionText">
-        <h2></h2>
-      </div>
-      <div class="column side" style="background-color:white;"></div>
-      <div class="column middle" style="background-color:#bbb;">
-        <button id="startBtn">START</button>
-        <button class="answerBtns" index="1">Placeholder</button>
-        <button class="answerBtns" index="2">Placeholder</button>
-        <button class="answerBtns" index="3">Placeholder</button>
-        <button class="answerBtns" index="4">Placeholder</button>
-      </div>
-      <div class="column side" style="background-color:white;"></div>
+        <div class="column side" style="background-color: white">
+          <div id="questionText">
+            <h2>Placeholder</h2>
+          </div>
+        </div>
+        <div class="column middle" style="background-color: #bbb">
+            <button class="answerBtn" index="0">Placeholder</button>
+            <button class="answerBtn" index="1">Placeholder</button>
+            <button class="answerBtn" index="2">Placeholder</button>
+            <button class="answerBtn" index="3">Placeholder</button>
+        </div>
+        <div class="column side" style="background-color: white"></div>
     </div>
-  </div>
-  <div class="footer">
+</div>
+
+<div class="footer">
     <p>Good Luck</p>
-  </div>
+</div>
 
   <script src="script.js"></script>
 </body>
