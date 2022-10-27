@@ -29,6 +29,7 @@ let questions = [
 ];
 
 // Set all global variables
+let scoreCount = 0
 let seconds = 76; // Starting time
 let currentQuestionIdx = 0 // Keep track of current question
 let timerElement = document.querySelector(".nav"); // Link to navbar
@@ -63,28 +64,37 @@ function displayQuestion(question) {
     for (let i = 0; i < allAnswerBtns.length; i++) {
         if (i < question.answers.length) {
             allAnswerBtns[i].textContent = question.answers[i];
+            allAnswerBtns[i].hidden = false;
+        } else {
+            allAnswerBtns[i].hidden = true;
         }
     }
 }
 
-
-
-
-
-
-
-
-
-
-// CREATE A POINTS CALCULATOR
-let scoreFinal = 0
-
+// Score function that checks if chosen answer is correct or wrong
 function score(chosenAnswer, correctAnswer) {
-    if (chosenAnswer === correctAnswer) {
-        scoreFinal++
-        displayWrongOrRight.textContent = "Correct!";
+    if (chosenAnswer == correctAnswer) {
+        scoreCount++;
+        displayWrongOrRight.textContent = 'Correct!';
     } else {
-        displayWrongOrRight.textContent = "Wrong!";
+        displayWrongOrRight.textContent = 'Wrong!';
+        seconds = seconds - timerPenalty;
     }
+}
+
+// Answer selected function that gets the index of the current quesetion, stores it,
+// calls the score function passing in answer selected and current questions correct index,
+// checking to see if matches.
+function answerSelected(event) {
+    let answerIndex = event.target.getAttribute('index');
+    let currentQuestion = questions[currentQuestionIdx];
+    score(answerIndex, currentQuestion.correctIndex);
+// The next question is displayed -- plus one in the index
+    currentQuestionIdx++;
+    if (currentQuestionIdx < questions.length) { 
+        displayQuestion(questions[currentQuestionIdx]);
+    } else { 
+        endQuiz(); 
+}
 }
 
