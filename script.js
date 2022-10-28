@@ -33,7 +33,6 @@ let scoreCount = 0
 let seconds = 76; // Starting time
 let currentQuestionIdx = 0 // Keep track of current question
 let timerPenalty = 2;
-let timerElement = document.querySelector(".nav"); // Link to navbar
 let allAnswerBtns = document.querySelectorAll(".answerBtn"); // Link to ALL anser buttons
 let displayWrongOrRight = document.querySelector(".footer"); // Link to footer for whether answer was right
 // Event listeners
@@ -106,8 +105,8 @@ function answerSelected(event) {
 function endQuiz() {
     startQuiz.hidden = false;
     questionCard.hidden = true;
-    // TODO: Stop timer
-    // TODO: Hide the question card
-    // TODO: Show the final scoreboard
-    // TODO: Clear footer
+    timerText.hidden = true;
+    summary.hidden = false;
+    result.textContent = scoreCount;
+    displayWrongOrRight.hidden = true;
 }
