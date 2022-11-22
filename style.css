@@ -8,7 +8,12 @@ body {
 
 /* Style the nav */
 nav {
-    text-align: end;
+    justify-content: end;
+}
+
+@font-face {
+    src: url("party.ttf");
+    font-family: party;
 }
 
 /* Style the question header */
@@ -52,9 +57,35 @@ nav {
     padding: 10px;
     text-align: center;
 }
- .nav p {
+
+.footer p {
+    color: rgb(142, 140, 141);
+    font-style: italic;
+    
+}
+
+.nav p {
     margin-right: 5px;
- }
+}
+
+.answerBtn {
+    flex: auto;
+    /* justify-content: center; */
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    margin: 20px;
+    position: relative;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#titleText {
+    font-size: 80px;
+    margin-bottom: 50px;
+    font-family: party;
+    color: deeppink;
+}
 
 #startBtn {
     background-color: pink;
@@ -67,27 +98,31 @@ nav {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
+    color: hotpink;
 
 }
 
-.answerBtn {
-    flex: auto;
-    justify-content: center;
-    width: 250px;
-    height: 50px;
-    font-size: 30px;
-    margin-top: 5px;
-    position: relative;
-    /* top: 20%;
-    left: 50%;
-    /* transform: translate(-50%, -50%); */
-    border-radius: 10px;
-    
-    
-
-
-
+#startBtn:hover {
+    background-color: deeppink;
+    color: ghostwhite;
 }
+
+
+#title {
+    text-align: center;
+}
+
+#summary {
+    text-align: center;
+}
+
+#timerText {
+    color: dimgrey;
+    margin: 20px;
+    font-size: 20px;
+}
+
+
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 /* @media (max-width: 600px) {
     .row {

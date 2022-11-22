@@ -1,4 +1,4 @@
-// Questions data - objects with questiona and answers
+// Questions data - objects with questions, answers, index that's correct.
 let questions = [
     {
         text: "Which data type returns a true or false value?",
@@ -28,18 +28,20 @@ let questions = [
     }
 ];
 
-// Set all global variables
+// Global variables
 let scoreCount = 0
 let seconds = 76; // Starting time
 let currentQuestionIdx = 0 // Keep track of current question
 let timerPenalty = 2;
 let allAnswerBtns = document.querySelectorAll(".answerBtn"); // Link to ALL anser buttons
 let displayWrongOrRight = document.querySelector(".footer"); // Link to footer for whether answer was right
+
 // Event listeners
 startBtn.addEventListener('click', startQuiz);
 for (let btn of allAnswerBtns) {
     btn.addEventListener('click', answerSelected);
 }
+
 // Start quiz function
 function startQuiz() {
     startBtn.hidden = true;
@@ -53,7 +55,7 @@ function startQuiz() {
 function timer() {
     let countdown = setInterval(function () {
         seconds--;
-        timerElement.textContent = "Time: " + seconds;
+        timerText.textContent = "Time: " + seconds;
         if (seconds === 0) {
             clearInterval(countdown);
         }
