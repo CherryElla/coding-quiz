@@ -41,6 +41,7 @@ startBtn.addEventListener('click', startQuiz);
 for (let btn of allAnswerBtns) {
     btn.addEventListener('click', answerSelected);
 }
+saveButton.addEventListener('click', saveScore)
 
 // Start quiz function
 function startQuiz() {
@@ -111,4 +112,51 @@ function endQuiz() {
     summary.hidden = false;
     result.textContent = scoreCount;
     displayWrongOrRight.hidden = true;
+}
+
+// A function where users can input their initials and save their score
+function saveScore () {
+    let initials = inputInitials.value
+    console.log(initials)
+    let finalScore = scoreCount
+    let scoreObj = {
+        initials: initials,
+        score: finalScore,
+        date: moment(),
+    }
+    let storageArr = readLocalStorage("scores")
+    if (storageArr === null) {
+        storageArr = []
+    }
+    storageArr.push(scoreObj);
+    writeToLocalStorage("scores", storageArr)
+    displayScores()
+}
+
+// Function to display scores
+function displayScores () {
+    let scores = readLocalStorage("scores")
+    console.log(scores)
+    scores = scores.map((scoreObj) => {
+        let newScoreObj = {
+            initials: scoreObj.initials,
+            score: scoreObj.score,
+            date: moment(scoreObj.date)
+        }
+        return newScoreObj
+    })
+    console.log(scores)
+}
+
+// Read local storage function
+function readLocalStorage (key) {
+    let value = localStorage.getItem(key);
+    let json = JSON.parse(value);
+    return json;
+}
+
+// Write to local storage function
+function writeToLocalStorage (key, data) {
+    let string = JSON.stringify(data);
+    localStorage.setItem(key, string);
 }
